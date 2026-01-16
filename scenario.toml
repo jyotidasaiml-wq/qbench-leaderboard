@@ -15,7 +15,7 @@ env = { OPENAI_API_KEY = "${OPENAI_API_KEY_TEST_AGENT}" }
 [config]
 # Quick test: 1 scenario × 1 seed = 1 episode (~1 minute)
 scenario_types = [
-    "priority_queue"
+    "steady_low_load_baseline"
 ]
 
 # Single seed for quick testing
