@@ -1,16 +1,33 @@
+# QBench Leaderboard Scenario Configuration
+# Queue Management Benchmark for AgentBeats
+
 [green_agent]
-agentbeats_id = ""
-env = { API_KEY = "${GITHUB_SECRET_NAME}", LOG_LEVEL = "INFO" }
+agentbeats_id = "019bc4cf-c0ff-7263-a95b-d9f9d83d2df1"  # QBench Evaluator
+env = {}  # Green agent doesn't need API keys
 
-[[participants]]
-agentbeats_id = ""
-name = "role_1_name"
-env = {}
-
-[[participants]]
-agentbeats_id = ""
-name = "role_2_name"
-env = {}
+# Example purple agent (contestants will add their own)
+# Uncomment and update to test:
+#
+# [[participants]]
+# agentbeats_id = "YOUR_PURPLE_AGENT_ID"  # Get from AgentBeats after registration
+# name = "contestant_agent"
+# env = { OPENAI_API_KEY = "${OPENAI_API_KEY_YOUR_AGENT}" }  # Reference GitHub secret
 
 [config]
-# Add your assessment config here
+# Scenario types to evaluate (all 5 QBench scenarios)
+scenario_types = [
+    "backlog_cap_stability_guard",
+    "dynamic_backlog_adjustment",
+    "priority_queue",
+    "high_low_priority_queue",
+    "dynamic_capacity"
+]
+
+# Random seeds for reproducibility (10 seeds per scenario = 50 total episodes)
+seeds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Parallel workers for faster execution
+parallel = 4
+
+# Verbose logging (false for cleaner CI output)
+verbose = false
